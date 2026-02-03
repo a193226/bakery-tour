@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パン旅</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">パン旅</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#latest">最新の動画</a></li>
+                    <li><a href="#popular">人気の動画</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1559466273-d95e72debaf8?q=80&w=1920&auto=format&fit=crop" alt="パン旅">
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">パン旅</h1>
+            <p class="hero-subtitle">毎日新しい味を発見する旅</p>
+            <a href="#latest" class="btn btn-primary">最新の動画を見る</a>
+        </div>
+    </section>
+
+    <section id="latest" class="section">
+        <h2 class="section-title">最新の動画</h2>
+        <p class="section-desc">最近のパン旅の動画をご紹介します。</p>
+        <div id="latest-grid" class="video-grid"></div>
+    </section>
+
+    <section id="popular" class="section section-alt">
+        <h2 class="section-title">人気の動画</h2>
+        <p class="section-desc">最も人気のあるパン旅の動画をご紹介します。</p>
+        <div id="popular-grid" class="video-grid"></div>
+    </section>
+
+    <section class="activity-section">
+        <div class="container">
+            <h2 class="section-title">活動</h2>
+            <p class="section-desc">パン旅の活動をご紹介します。</p>
+            <div class="center-text">
+                <a href="https://www.youtube.com/@pantabi_mamizu" target="_blank" class="btn btn-primary">YouTubeチャンネルを見る</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link"><span>Instagram</span></a>
+                <a href="#" class="social-link"><span>Twitter</span></a>
+                <a href="#" class="social-link"><span>Facebook</span></a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
