@@ -1,0 +1,106 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Mock Data ---
+    const latestVideos = [
+        {
+            title: "【絶品】早起きして行きたい！東京の隠れ家パン屋巡り",
+            views: "24K views",
+            date: "2 days ago",
+            thumb: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "クロワッサン好き必見。パリパリ食感が止まらない最高のお店",
+            views: "15K views",
+            date: "5 days ago",
+            thumb: "https://images.unsplash.com/photo-1555507036-ab1f40388085?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "週末限定！行列のできるベーグル専門店に行ってみた",
+            views: "32K views",
+            date: "1 week ago",
+            thumb: "https://images.unsplash.com/photo-1559466273-d95e72debaf8?q=80&w=600&auto=format&fit=crop"
+        }
+    ];
+
+    const popularVideos = [
+        {
+            title: "【パン旅】365日食べたい！究極の食パンを探す旅",
+            views: "150K views",
+            date: "3 months ago",
+            thumb: "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "京都の老舗パン屋で出会った、忘れられない味",
+            views: "98K views",
+            date: "2 months ago",
+            thumb: "https://images.unsplash.com/photo-1517433670967-1387532f6584?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "【ASMR】ハード系パンをひたすら食べる動画",
+            views: "76K views",
+            date: "1 month ago",
+            thumb: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?q=80&w=600&auto=format&fit=crop"
+        },
+        {
+            title: "朝活。焼きたての香りに包まれる至福の時間",
+            views: "65K views",
+            date: "4 months ago",
+            thumb: "https://images.unsplash.com/photo-1550617931-e17a7b70dce2?q=80&w=600&auto=format&fit=crop"
+        }
+    ];
+
+    // --- Render Functions ---
+    const createCard = (video) => {
+        return `
+            <a href="https://www.youtube.com/@pantabi_mamizu" target="_blank" class="video-card">
+                <div class="video-thumb">
+                    <img src="${video.thumb}" alt="${video.title}" loading="lazy">
+                </div>
+                <div class="video-info">
+                    <h3 class="video-title">${video.title}</h3>
+                    <p class="video-meta">${video.views} • ${video.date}</p>
+                </div>
+            </a>
+        `;
+    };
+
+    const renderGrid = (id, data) => {
+        const grid = document.getElementById(id);
+        if (grid) {
+            grid.innerHTML = data.map(createCard).join('');
+        }
+    };
+
+    renderGrid('latest-grid', latestVideos);
+    renderGrid('popular-grid', popularVideos);
+
+
+    // --- Scroll Animations (Intersection Observer) ---
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+    });
+
+    // --- Sticky Header Scroll Effect ---
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+});
